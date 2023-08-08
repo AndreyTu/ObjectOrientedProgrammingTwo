@@ -2,70 +2,67 @@ package ru.netology.javaqa;
 
 public class Radio {
 
-    public int increaseVolume;
+    private int currentRadio;
+    private int currentVolume;
 
-    public int getIncreaseVolume() {
-        return increaseVolume;
+    public int getCurrentRadio() {
+
+        return currentRadio;
     }
 
-    public void setIncreaseVolume(int newIncreaseVolume) {
-        increaseVolume = newIncreaseVolume;
+    public void setCurrentRadio(int currentRadio) {
+        if (currentRadio > 9) {
+            return;
+        }
+        if ( currentRadio < 0) {
+            return;
+        }
+        this.currentRadio = currentRadio;
+    }
+    public void nextRadio() {
 
-        if (newIncreaseVolume >= 100) {
-            increaseVolume = 100;
+        if (currentRadio == 9) {
+            currentRadio = 0;
+        }
+        else {
+            currentRadio = currentRadio + 1;
+        }
+    }
+    public void prevRadio() {
+
+        if (currentRadio == 0) {
+            currentRadio = 9;
         } else {
-            increaseVolume = increaseVolume + 1;
+            currentRadio = currentRadio - 1;
         }
     }
 
 
-    public int decreaseVolume;
+    public int getCurrentVolume() {
 
-    public int getDecreaseVolume() {
-        return decreaseVolume;
+        return currentVolume;
     }
 
-    public void setDecreaseVolume(int newDecreaseVolume) {
-        decreaseVolume = newDecreaseVolume;
+    public void setCurrentVolume(int currentVolume) {
 
-        if (newDecreaseVolume <= 0) {
-            decreaseVolume = 0;
-        } else {
-            decreaseVolume = decreaseVolume - 1;
+        if (currentVolume > 100) {
+            return;
+        }
+        if (currentVolume < 0) {
+            return;
+        }
+        this.currentVolume = currentVolume;
+    }
+
+    public void increaseVolume() {
+        if (currentVolume < 100) {
+            currentVolume = currentVolume + 1;
         }
     }
 
-
-    public int nextRadio;
-
-    public int getNextRadio() {
-        return nextRadio;
-    }
-
-    public void setNextRadio(int newNextRadio) {
-        nextRadio = newNextRadio;
-
-        if (newNextRadio >= 9) {
-            nextRadio = 0;
-        } else {
-            nextRadio = nextRadio + 1;
-        }
-    }
-
-
-    public int prevRadio;
-
-    public int getPrevRadio() {
-        return prevRadio;
-    }
-
-    public void setPrevRadio(int newPrevRadio) {
-        prevRadio = newPrevRadio;
-
-        if (newPrevRadio <= 0) {
-            prevRadio = 9;
-        } else {
-            prevRadio = prevRadio - 1;
+    public void decreaseVolume() {
+        if (currentVolume > 0) {
+            currentVolume = currentVolume - 1;
         }
     }
 }
