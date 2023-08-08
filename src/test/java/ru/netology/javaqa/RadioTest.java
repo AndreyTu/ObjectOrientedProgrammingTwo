@@ -16,6 +16,18 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void setCurrentRadioOverHigh() {
+        Radio rad = new Radio(12);
+
+        rad.setCurrentRadio(4);
+        rad.setCurrentRadio(12);
+
+        int expected = 4;
+        int actual = rad.getCurrentRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void setCurrentRadioOver9() {
@@ -95,6 +107,20 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
     /*---------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+    @Test
+    public void  testNextRadioOverHigh () {
+        Radio rad = new Radio(12);
+
+        rad.setCurrentRadio(11);
+        rad.nextRadio();
+
+        int expected = 0;
+        int actual = rad.getCurrentRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
     @Test
     public void  testNextRadio () {
         Radio rad = new Radio();
@@ -167,6 +193,19 @@ public class RadioTest {
         rad.prevRadio();
 
         int expected = 9;
+        int actual = rad.getCurrentRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void  testPrevRadioZeroOverLimit () {
+        Radio rad = new Radio(15);
+
+        rad.setCurrentRadio(0);
+        rad.prevRadio();
+
+        int expected = 14;
         int actual = rad.getCurrentRadio();
 
         Assertions.assertEquals(expected, actual);
