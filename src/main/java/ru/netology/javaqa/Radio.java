@@ -4,34 +4,43 @@ public class Radio {
 
     private int currentRadio;
     private int currentVolume;
+    private int numberOfStations = 10;
 
     public int getCurrentRadio() {
 
         return currentRadio;
     }
 
+    public Radio(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+    }
+
+    public Radio() {
+    }
+
     public void setCurrentRadio(int currentRadio) {
-        if (currentRadio > 9) {
+        if (currentRadio > numberOfStations - 1) {
             return;
         }
-        if ( currentRadio < 0) {
+        if (currentRadio < 0) {
             return;
         }
         this.currentRadio = currentRadio;
     }
+
     public void nextRadio() {
 
-        if (currentRadio == 9) {
+        if (currentRadio == numberOfStations - 1) {
             currentRadio = 0;
-        }
-        else {
+        } else {
             currentRadio = currentRadio + 1;
         }
     }
+
     public void prevRadio() {
 
         if (currentRadio == 0) {
-            currentRadio = 9;
+            currentRadio = numberOfStations - 1;
         } else {
             currentRadio = currentRadio - 1;
         }
