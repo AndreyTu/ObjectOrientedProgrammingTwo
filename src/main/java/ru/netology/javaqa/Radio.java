@@ -15,27 +15,28 @@ public class Radio {
         this.numberOfStations = numberOfStations;
     }
 
-    public Radio () {
+    public Radio() {
     }
 
     public void setCurrentRadio(int currentRadio) {
         if (currentRadio > numberOfStations - 1) {
             return;
         }
-        if ( currentRadio < 0) {
+        if (currentRadio < 0) {
             return;
         }
         this.currentRadio = currentRadio;
     }
+
     public void nextRadio() {
 
         if (currentRadio == numberOfStations - 1) {
             currentRadio = 0;
-        }
-        else {
+        } else {
             currentRadio = currentRadio + 1;
         }
     }
+
     public void prevRadio() {
 
         if (currentRadio == 0) {
